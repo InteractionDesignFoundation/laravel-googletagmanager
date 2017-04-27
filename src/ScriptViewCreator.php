@@ -39,14 +39,7 @@ class ScriptViewCreator
             ->with('environmentEnabled', $this->googleTagManager->isEnvironmentEnabled());
 
         if ($this->googleTagManager->isEnvironmentEnabled()) {
-            $environmentForJs = "+ '&gtm_auth="
-                . $this->googleTagManager->getGtmAuth()
-                . "&gtm_preview="
-                . $this->googleTagManager->getGtmPreview()
-                . "&gtm_cookies_win="
-                . $this->googleTagManager->getGtmCookiesWin()
-                . "'";
-            $environmentForNoJs = "&gtm_auth="
+            $environmentAddition = "&gtm_auth="
                 . $this->googleTagManager->getGtmAuth()
                 . "&gtm_preview="
                 . $this->googleTagManager->getGtmPreview()
@@ -54,8 +47,7 @@ class ScriptViewCreator
                 . $this->googleTagManager->getGtmCookiesWin();
 
             $view
-                ->with('environmentForJs', $environmentForJs)
-                ->with('environmentForNoJs', $environmentForNoJs);
+                ->with('environmentAddition', $environmentAddition);
         }
     }
 }
