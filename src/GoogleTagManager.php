@@ -19,6 +19,11 @@ class GoogleTagManager
     protected $enabled;
 
     /**
+     * @var bool
+     */
+    protected $environmentEnabled;
+
+    /**
      * @var \Spatie\GoogleTagManager\DataLayer
      */
     protected $dataLayer;
@@ -44,6 +49,10 @@ class GoogleTagManager
         $this->pushDataLayer = new \Illuminate\Support\Collection();
 
         $this->enabled = true;
+        $this->environmentEnabled = false;
+        $this->gtmAuth = '';
+        $this->gtmPreview = '';
+        $this->gtmCookiesWin = '';
     }
 
     /**
@@ -80,6 +89,63 @@ class GoogleTagManager
     public function disable()
     {
         $this->enabled = false;
+    }
+
+    /**
+     * Check whether environment usage is enabled.
+     *
+     * @return bool
+     */
+    public function isEnvironmentEnabled()
+    {
+        return $this->environmentEnabled;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGtmAuth()
+    {
+        return $this->gtmAuth;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGtmPreview()
+    {
+        return $this->gtmPreview;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGtmCookiesWin()
+    {
+        return $this->gtmCookiesWin;
+    }
+
+    /**
+     * Enable Google Tag Manager environment usage.
+     *
+     * @param $gtmAuth
+     * @param $gtmPreview
+     * @param $gtmCookiesWin
+     */
+    public function enableEnvironment($gtmAuth, $gtmPreview, $gtmCookiesWin)
+    {
+        $this->environmentEnabled = true;
+        $this->gtmAuth = $gtmAuth;
+        $this->gtmPreview = $gtmPreview;
+        $this->gtmCookiesWin = $gtmCookiesWin;
+    }
+
+    /**
+     * Disable Google Tag Manager environment usage.
+     */
+    public function disableEnvironment()
+    {
+        $this->environmentEnabled = false;
     }
 
     /**

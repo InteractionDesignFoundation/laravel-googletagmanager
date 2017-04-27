@@ -6,6 +6,16 @@ return [
      * The Google Tag Manager id, should be a code that looks something like "gtm-xxxx".
      */
     'id' => '',
+
+    /*
+     * If the Google Tag Manager is being used for an environment... If
+     * "environmentEnabled" is true, then variables gtmAuth, gtmPreview and
+     * gtmCookiesWin should be filled.
+     */
+    'environmentEnabled' => false,
+    'gtmAuth' => '',
+    'gtmPreview' => '',
+    'gtmCookiesWin' => '',
     
     /*
      * Enable or disable script rendering. Useful for local development.

@@ -35,6 +35,27 @@ class ScriptViewCreator
             ->with('enabled', $this->googleTagManager->isEnabled())
             ->with('id', $this->googleTagManager->id())
             ->with('dataLayer', $this->googleTagManager->getDataLayer())
-            ->with('pushData', $this->googleTagManager->getPushData());
+            ->with('pushData', $this->googleTagManager->getPushData())
+            ->with('environmentEnabled', $this->googleTagManager->isEnvironmentEnabled());
+
+        if ($this->googleTagManager->isEnvironmentEnabled()) {
+            $environmentForJs = "+ '&gtm_auth="
+                . $this->googleTagManager->getGtmAuth()
+                . "&gtm_preview="
+                . $this->googleTagManager->getGtmPreview()
+                . "&gtm_cookies_win="
+                . $this->googleTagManager->getGtmCookiesWin()
+                . "'";
+            $environmentForNoJs = "&gtm_auth="
+                . $this->googleTagManager->getGtmAuth()
+                . "&gtm_preview="
+                . $this->googleTagManager->getGtmPreview()
+                . "&gtm_cookies_win="
+                . $this->googleTagManager->getGtmCookiesWin();
+
+            $view
+                ->with('environmentForJs', $environmentForJs)
+                ->with('environmentForNoJs', $environmentForNoJs);
+        }
     }
 }
