@@ -36,13 +36,13 @@ In L5.4 or below start by registering the package's the service provider and fac
 // config/app.php
 
 'providers' => [
-  ...
-  Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
+    ...
+    Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
 ],
 
 'aliases' => [
-  ...
-  'GoogleTagManager' => Spatie\GoogleTagManager\GoogleTagManagerFacade::class,
+    ...
+    'GoogleTagManager' => Spatie\GoogleTagManager\GoogleTagManagerFacade::class,
 ],
 ```
 
@@ -51,13 +51,13 @@ In L5.4 or below start by registering the package's the service provider and fac
 Next, publish the config files:
 
 ```bash
-$ php artisan vendor:publish --provider="Spatie\GoogleTagManager\GoogleTagManagerServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Spatie\GoogleTagManager\GoogleTagManagerServiceProvider" --tag="config"
 ```
 
 Optionally publish the view files. It's **not** recommended to do this unless necessary so your views stay up-to-date in future package releases.
 
 ```bash
-$ php artisan vendor:publish --provider="Spatie\GoogleTagManager\GoogleTagManagerServiceProvider" --tag="views"
+php artisan vendor:publish --provider="Spatie\GoogleTagManager\GoogleTagManagerServiceProvider" --tag="views"
 ```
 
 If you plan on using the [flash-functionality](#flashing-data-for-the-next-request) you must install the GoogleTagManagerMiddleware, after the StartSession middleware:
@@ -65,12 +65,12 @@ If you plan on using the [flash-functionality](#flashing-data-for-the-next-reque
 ```php
 // app/Http/Kernel.php
 
-    protected $middleware = [
-        ...
-        Illuminate\Session\Middleware\StartSession::class,
-        Spatie\GoogleTagManager\GoogleTagManagerMiddleware::class,
-        ...
-    ];
+protected $middleware = [
+    ...
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Spatie\GoogleTagManager\GoogleTagManagerMiddleware::class,
+    ...
+];
 ``` 
 
 ## Configuration
@@ -206,7 +206,7 @@ $enabled = GoogleTagManager::isEnabled(); // true|false
 GoogleTagManager::enable();
 GoogleTagManager::disable();
 
-// Add data to the data layer (automatically renders right before the tag manager script). Setting new values merges them with the previous ones. Set als supports dot notation.
+// Add data to the data layer (automatically renders right before the tag manager script). Setting new values merges them with the previous ones. Set also supports dot notation.
 GoogleTagManager::set(['foo' => 'bar']);
 GoogleTagManager::set('baz', ['ho' => 'dor']);
 GoogleTagManager::set('baz.ho', 'doorrrrr');
