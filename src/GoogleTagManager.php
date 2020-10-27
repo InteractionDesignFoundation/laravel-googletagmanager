@@ -68,7 +68,7 @@ class GoogleTagManager
     public function setId($id)
     {
         $this->id = $id;
-        
+
         return $this;
     }
 
@@ -134,12 +134,8 @@ class GoogleTagManager
 
     /**
      * Enable Google Tag Manager environment usage.
-     *
-     * @param $gtmAuth
-     * @param $gtmPreview
-     * @param $gtmCookiesWin
      */
-    public function enableEnvironment($gtmAuth, $gtmPreview, $gtmCookiesWin)
+    public function enableEnvironment(string $gtmAuth, string $gtmPreview, string $gtmCookiesWin)
     {
         $this->environmentEnabled = true;
         $this->gtmAuth = $gtmAuth;
