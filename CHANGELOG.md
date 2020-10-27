@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-googletagmanager` will be documented in this file
 
+## 2.6.1 - 2019-08-21
+Get default values from .env file
+
+## 2.6.0 + 2018-10-30
+- Added: `setId`
+
+## 2.5.1 - 2018-10-15
+- Fixed view creator
+
+## 2.5.0 - 2018-07-25
+- Separate the script to head and body sections
+
 ## 2.4.0 - 2017-10-26
 - Added: support for L5.5 package discovery
 

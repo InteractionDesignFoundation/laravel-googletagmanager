@@ -3,7 +3,6 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-googletagmanager.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-googletagmanager)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-googletagmanager.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-googletagmanager)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ba7ab249-33cd-4878-a196-32b9c809c769.svg?style=flat-square)](https://insight.sensiolabs.com/projects/ba7ab249-33cd-4878-a196-32b9c809c769)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-googletagmanager.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-googletagmanager)
 
 An easy [Google Tag Manager](http://www.google.com/tagmanager/) implementation for your Laravel 5 application.
@@ -11,6 +10,14 @@ An easy [Google Tag Manager](http://www.google.com/tagmanager/) implementation f
 Laravel 4 version: [spatie/laravel4-googletagmanager](https://github.com/spatie/laravel4-googletagmanager)
 
 Spatie is a webdesign agency in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
+## Support us
+
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-googletagmanager.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-googletagmanager)
+
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Google Tag Manager
 
@@ -122,9 +129,12 @@ First you'll need to include Google Tag Manager's script. Google's docs recommen
 ```
 {{-- layout.blade.php --}}
 <html>
-  {{-- ... --}}
+  <head>
+    @include('googletagmanager::head')
+    {{-- ... --}}
+  </head>
   <body>
-    @include('googletagmanager::script')
+    @include('googletagmanager::body')
     {{-- ... --}}
   </body>
 </html>
@@ -147,12 +157,12 @@ This renders:
 
 ```html
 <html>
-  <!-- ... -->
-  <body>
+  <head>
     <script>dataLayer = [{"pageType":"productDetail"}];</script>
     <script>/* Google Tag Manager's script */</script>
     <!-- ... -->
-  </body>
+  </head>
+  <!-- ... -->
 </html>
 ```
 
@@ -184,12 +194,12 @@ After a form submit, the following dataLayer will be parsed on the contact page:
 
 ```html
 <html>
-  <!-- ... -->
-  <body>
+  <head>
     <script>dataLayer = [{"pageType":"contact","formResponse":"success"}];</script>
     <script>/* Google Tag Manager's script */</script>
     <!-- ... -->
-  </body>
+  </head>
+  <!-- ... -->
 </html>
 ```
 
@@ -292,7 +302,7 @@ If you discover any security related issues, please email freek@spatie.be instea
 
 You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
 
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+Our address is: Spatie, Kruikstraat 22, 2018 Antwerp, Belgium.
 
 We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
 
@@ -300,13 +310,6 @@ We publish all received postcards [on our company website](https://spatie.be/en/
 
 - [Sebastian De Deyne](https://github.com/sebastiandedeyne)
 - [All Contributors](../../contributors)
-
-## Support us
-
-Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
-
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
-All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 
