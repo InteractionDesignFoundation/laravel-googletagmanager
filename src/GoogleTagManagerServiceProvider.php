@@ -41,11 +41,11 @@ class GoogleTagManagerServiceProvider extends ServiceProvider
             $googleTagManager->disable();
         }
 
-        if (config('googletagmanager.environmentEnabled') === true) {
+        if (config('googletagmanager.environment.enabled') === true) {
             $googleTagManager->enableEnvironment(
-                config('googletagmanager.gtmAuth'),
-                config('googletagmanager.gtmPreview'),
-                config('googletagmanager.gtmCookiesWin')
+                config('googletagmanager.environment.gtmAuth'),
+                config('googletagmanager.environment.gtmPreview'),
+                config('googletagmanager.environment.gtmCookiesWin')
             );
         }
 

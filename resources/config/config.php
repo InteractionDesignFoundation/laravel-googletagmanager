@@ -25,12 +25,14 @@ return [
     'sessionKey' => env('GOOGLE_TAG_MANAGER_SESSION_KEY', '_googleTagManager'),
 
     /*
-     * If the Google Tag Manager is being used for an environment... If
-     * "environmentEnabled" is true, then variables gtmAuth, gtmPreview and
-     * gtmCookiesWin should be filled.
+     * Configure how Tag Manager works between development and production and other server environments.
+     * @see https://support.google.com/tagmanager/answer/6311518
      */
-    'environmentEnabled' => false,
-    'gtmAuth' => '',
-    'gtmPreview' => '',
-    'gtmCookiesWin' => '',
+    'environment' => [
+        'enabled' => env('GOOGLE_TAG_MANAGER_ENV_ENABLED', false),
+
+        'gtmAuth' => env('GOOGLE_TAG_MANAGER_AUTH'), // required when environmentEnabled = true
+        'gtmPreview' => env('GOOGLE_TAG_MANAGER_PREVIEW'), // required when environmentEnabled = true
+        'gtmCookiesWin' => env('GOOGLE_TAG_MANAGER_COOKIES_WIN'), // required when environmentEnabled = true
+    ],
 ];
